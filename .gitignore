@@ -1,0 +1,71 @@
+# Build outputs
+*.o
+*.obj
+*.out
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Coverage and profiling
+*.gcda
+*.gcno
+*.gcov
+*.prof
+*.profraw
+*.profdata
+coverage/
+
+# Debugger / sanitizer / crash artifacts
+core
+vgcore.*
+*.stackdump
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+Makefile
+Testing/
+CTestTestfile.cmake
+
+# Generic build directories
+build/
+dist/
+out/
+
+# Editors and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python cache from repository tooling
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+__pycache__/
+
+.env
+*.pem
+*.key
+credentials.json
+service-account.json
+local.properties
+**/data/raw/**
+**/.ipynb_checkpoints/**
+__pycache__/
+
+# Generated, local, and secret material
+.env.*
+!.env.example
+*.p12
+*.pfx
+service-account*.json
+google-services.json
+*.py[cod]
+.ipynb_checkpoints/
+*.class
+node_modules/
