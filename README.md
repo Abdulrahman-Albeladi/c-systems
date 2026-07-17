@@ -108,3 +108,25 @@ Files and interfaces that originated in a course framework, starter code, or oth
 | Graph ADT | `projects/project4`, `projects/project5`, `projects/graph-adt` | Graph implementations, public/internal headers, and name-list formatting support. | `project4` and `project5` have Makefiles. No passing result is recorded. |
 | Process runner | `projects/project6`, `projects/process-runner` | Process-runner-related implementation, internal/public interfaces, and splitting support. | `project6` has a Makefile and recovered harness-like files. No result is recorded. |
 | Machine programs | `projects/project7` | Recovered paired `.c` and `.s` programs. | No Makefile is listed; execution environment and expected outputs are unresolved. |
+
+<!-- portfolio-public-release-license:start -->
+
+## License and public-release status
+
+This repository is published under an all-rights-reserved
+portfolio license. Viewing the repository does not grant permission to reuse its code,
+documentation, datasets, or assets. Third-party and collaborator materials retain
+their original rights.
+
+Before changing visibility from private to public, the owner must complete the
+ownership checklist in `LICENSE_REVIEW.md`.
+
+<!-- portfolio-public-release-license:end -->
+
+<!-- release-license:start -->
+
+## License and public-release status
+
+This repository uses an all-rights-reserved portfolio license. Review `LICENSE_REVIEW.md` and `THIRD_PARTY_NOTICES.md` before changing visibility to public.
+
+<!-- release-license:end -->
