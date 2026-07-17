@@ -109,24 +109,17 @@ Files and interfaces that originated in a course framework, starter code, or oth
 | Process runner | `projects/project6`, `projects/process-runner` | Process-runner-related implementation, internal/public interfaces, and splitting support. | `project6` has a Makefile and recovered harness-like files. No result is recorded. |
 | Machine programs | `projects/project7` | Recovered paired `.c` and `.s` programs. | No Makefile is listed; execution environment and expected outputs are unresolved. |
 
-<!-- portfolio-public-release-license:start -->
+## Current repository layout
 
-## License and public-release status
+- `.github/` — 1 files
+- `docs/` — 1 files
+- `projects/` — 85 files
 
-This repository is published under an all-rights-reserved
-portfolio license. Viewing the repository does not grant permission to reuse its code,
-documentation, datasets, or assets. Third-party and collaborator materials retain
-their original rights.
+## Public-release status
 
-Before changing visibility from private to public, the owner must complete the
-ownership checklist in `LICENSE_REVIEW.md`.
+**READY FOR FINAL MANUAL PUBLIC-RELEASE CHECK**
 
-<!-- portfolio-public-release-license:end -->
+Automated security and documentation checks pass. Complete the ownership checklist and verify build or test claims before changing visibility.
 
-<!-- release-license:start -->
-
-## License and public-release status
-
-This repository uses an all-rights-reserved portfolio license. Review `LICENSE_REVIEW.md` and `THIRD_PARTY_NOTICES.md` before changing visibility to public.
-
-<!-- release-license:end -->
+This repository uses an all-rights-reserved portfolio license. Review `LICENSE`,
+`LICENSE_REVIEW.md`, `THIRD_PARTY_NOTICES.md`, and `OWNERSHIP_REVIEW.md`.
