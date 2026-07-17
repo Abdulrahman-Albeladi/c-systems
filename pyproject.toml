@@ -1,0 +1,6 @@
+[tool.black]
+line-length = 88
+# Exclude the tools directory used for repository validation helpers and other
+# top-level build/dist directories that should not be reformatted here.
+# Black uses a regex for exclude; keep it in sync with the existing repo layout.
+exclude = '\\/(notebooks|\\.git|\\.venv|venv|build|dist|tools)\\/'

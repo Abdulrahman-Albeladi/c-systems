@@ -1,8 +1,10 @@
 #include <stdio.h>
 
+/* Ensure machine types are available to other headers that may rely on them. */
+#include "machine.h"
+
 #include "assembler.h"
 #include "interpreter.h"
-#include "machine.h"
 
 int main(void) {
   Machine spim = {{0}};
