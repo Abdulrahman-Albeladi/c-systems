@@ -1,4 +1,4 @@
-# systems-c-reconstructions
+# C Systems
 
 Recovered C systems-programming work reconstructed from course and research files associated with 216. This repository preserves implementation material that can be reviewed independently while keeping reconstruction boundaries, licensing questions, and validation gaps visible.
 
