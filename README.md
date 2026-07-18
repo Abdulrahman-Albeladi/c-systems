@@ -2,7 +2,7 @@
 
 Recovered C systems-programming work reconstructed from course and research files associated with 216. This repository preserves implementation material that can be reviewed independently while keeping reconstruction boundaries, licensing questions, and validation gaps visible.
 
-The repository contains both recovered project directories (`projects/project1` through `projects/project7`) and reorganized project directories intended to provide clearer source/include layouts for selected components. The reorganized directories are not presented as independent reimplementations unless their source history establishes that distinction.
+The repository contains both recovered project directories (`projects/line-checker` through `projects/c-and-assembly-examples`) and reorganized project directories intended to provide clearer source/include layouts for selected components. The reorganized directories are not presented as independent reimplementations unless their source history establishes that distinction.
 
 ## Scope
 
@@ -45,10 +45,10 @@ git clone <repository-url>
 cd systems-c-reconstructions
 
 # Inspect the recovered build definitions before running them.
-make -C projects/project3
-make -C projects/project4
-make -C projects/project5
-make -C projects/project6
+make -C projects/original-machine-simulator
+make -C projects/original-graph-implementation
+make -C projects/graph-and-name-list
+make -C projects/original-process-runner
 ```
 
 The commands above are candidate build commands, not recorded successful builds. Their availability follows from the presence of project-local Makefiles; target names, compiler assumptions, and runtime behavior must be checked from those files in the checkout.
@@ -70,17 +70,9 @@ cc -std=c11 -Wall -Wextra -Iprojects/process-runner/include \
 
 These are recommended checks, not evidence that the code has compiled cleanly under a particular toolchain.
 
-## Validation status
-
-No successful build, test, sanitizer, or continuous-integration result is recorded here. The repository includes `.github/workflows/ci.yml`, but the file list alone does not establish which jobs run or whether they have succeeded.
-
-Several recovered directories contain files named `test`, `public`, `ourtest`, `studentcode`, `studentprogram`, or `memory-checking`. Their presence indicates recovered harness, sample, or support material; it does not establish coverage, expected behavior, or a passing test result. In particular, `projects/project6` contains a mixture of implementation files, headers, test-like sources, and `.input` fixtures that should be reviewed before being treated as a public test suite.
-
-Recommended validation is listed in the JSON `recommended_tests` and `validation_commands` fields accompanying this README.
-
 ## Data and external requirements
 
-No private dataset, credential, network service, or database is identified by the recovered file list. The checked-in `.input` files under `projects/project6` are local input fixtures, not evidence of access to external or private data.
+No private dataset, credential, network service, or database is identified by the recovered file list. The checked-in `.input` files under `projects/original-process-runner` are local input fixtures, not evidence of access to external or private data.
 
 Before publishing additional fixtures, traces, grading outputs, or course materials, verify that they do not contain private data, protected assignment content, or material distributed under restrictions. Do not add secrets, machine-specific paths, or unreviewed external inputs to the repository.
 
@@ -102,24 +94,23 @@ Files and interfaces that originated in a course framework, starter code, or oth
 
 | Project | Primary location | Summary | Build/validation position |
 | --- | --- | --- | --- |
-| Line checker | `projects/project1` | One recovered C source file, `linecheck.c`. | No Makefile or test fixture is listed; behavior requires source review. |
-| Instruction encoding | `projects/project2`, `projects/instruction-encoding` | Machine-related implementation and interface files. | A recovered `test.c` exists in `project2`; no recorded result is available. |
-| Machine simulator | `projects/project3`, `projects/machine-simulator` | Machine state, interpreter, and assembler interfaces; recovered example/program material. | `project3` has a Makefile. Build and execution are unverified. |
-| Graph ADT | `projects/project4`, `projects/project5`, `projects/graph-adt` | Graph implementations, public/internal headers, and name-list formatting support. | `project4` and `project5` have Makefiles. No passing result is recorded. |
-| Process runner | `projects/project6`, `projects/process-runner` | Process-runner-related implementation, internal/public interfaces, and splitting support. | `project6` has a Makefile and recovered harness-like files. No result is recorded. |
-| Machine programs | `projects/project7` | Recovered paired `.c` and `.s` programs. | No Makefile is listed; execution environment and expected outputs are unresolved. |
+| Line checker | `projects/line-checker` | One recovered C source file, `linecheck.c`. | No Makefile or test fixture is listed; behavior requires source review. |
+| Instruction encoding | `projects/original-instruction-encoding`, `projects/instruction-encoding` | Machine-related implementation and interface files. | A recovered `test.c` exists in `project2`; no recorded result is available. |
+| Machine simulator | `projects/original-machine-simulator`, `projects/machine-simulator` | Machine state, interpreter, and assembler interfaces; recovered example/program material. | `project3` has a Makefile. Build and execution are unverified. |
+| Graph ADT | `projects/original-graph-implementation`, `projects/graph-and-name-list`, `projects/graph-adt` | Graph implementations, public/internal headers, and name-list formatting support. | `project4` and `project5` have Makefiles. No passing result is recorded. |
+| Process runner | `projects/original-process-runner`, `projects/process-runner` | Process-runner-related implementation, internal/public interfaces, and splitting support. | `project6` has a Makefile and recovered harness-like files. No result is recorded. |
+| Machine programs | `projects/c-and-assembly-examples` | Recovered paired `.c` and `.s` programs. | No Makefile is listed; execution environment and expected outputs are unresolved. |
 
-## Current repository layout
+<!-- internal-projects:start -->
+## Projects
 
-- `.github/` — 1 files
-- `docs/` — 1 files
-- `projects/` — 85 files
-
-## Public-release status
-
-**READY FOR FINAL MANUAL PUBLIC-RELEASE CHECK**
-
-Automated security and documentation checks pass. Complete the ownership checklist and verify build or test claims before changing visibility.
-
-This repository uses an all-rights-reserved portfolio license. Review `LICENSE`,
-`LICENSE_REVIEW.md`, `THIRD_PARTY_NOTICES.md`, and `OWNERSHIP_REVIEW.md`.
+| Project | Location |
+|---|---|
+| Line Checker | `projects/line-checker` |
+| Original Instruction Encoding | `projects/original-instruction-encoding` |
+| Original Machine Simulator | `projects/original-machine-simulator` |
+| Original Graph Implementation | `projects/original-graph-implementation` |
+| Graph and Name List | `projects/graph-and-name-list` |
+| Original Process Runner | `projects/original-process-runner` |
+| C and Assembly Examples | `projects/c-and-assembly-examples` |
+<!-- internal-projects:end -->
