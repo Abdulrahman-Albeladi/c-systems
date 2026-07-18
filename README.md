@@ -1,5 +1,12 @@
 # C Systems
 
+<!-- employer-visual:start -->
+<p align="center">
+  <img src="docs/portfolio-overview.png" alt="C Systems project overview" width="100%">
+</p>
+<!-- employer-visual:end -->
+
+
 C and assembly projects covering machine simulation, graphs, process execution, and low-level data structures.
 
 **Technologies:** C · Assembly · Make · Unix
