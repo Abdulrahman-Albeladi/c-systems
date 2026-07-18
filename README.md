@@ -1,116 +1,38 @@
 # C Systems
 
-Recovered C systems-programming work reconstructed from course and research files associated with 216. This repository preserves implementation material that can be reviewed independently while keeping reconstruction boundaries, licensing questions, and validation gaps visible.
+C and assembly projects covering machine simulation, graphs, process execution, and low-level data structures.
 
-The repository contains both recovered project directories (`projects/line-checker` through `projects/c-and-assembly-examples`) and reorganized project directories intended to provide clearer source/include layouts for selected components. The reorganized directories are not presented as independent reimplementations unless their source history establishes that distinction.
+**Technologies:** C · Assembly · Make · Unix
 
-## Scope
+## Highlights
 
-The recovered material covers:
+- Instruction encoding and a small machine-simulation workflow.
+- Graph abstract data types and name-list formatting.
+- Process-running, string-splitting, and C/assembly examples.
 
-- line-oriented C input checking;
-- instruction and machine-state encoding support;
-- a small machine simulator with assembler/interpreter interfaces;
-- graph abstract data type implementations and name-list formatting;
-- a process-runner component with string splitting support;
-- assembly and C program pairs used with the machine-related work.
-
-See [docs/reconstruction-boundaries.md](docs/reconstruction-boundaries.md) for repository-editing and reconstruction constraints. See [LICENSE_REVIEW.md](LICENSE_REVIEW.md) before reusing code whose origin or redistribution status is not yet resolved.
-
-## Repository layout
-
-```text
-projects/
-  project1/                Recovered line-checking source
-  project2/                Recovered machine/instruction-encoding source
-  project3/                Recovered assembler/interpreter/machine project
-  project4/                Recovered graph implementation
-  project5/                Recovered graph and name-list formatting project
-  project6/                Recovered process-runner project and harness material
-  project7/                Recovered C and assembly program pairs
-  instruction-encoding/    Reorganized instruction-encoding source and headers
-  machine-simulator/       Reorganized machine simulator source and headers
-  graph-adt/               Reorganized graph ADT source and headers
-  process-runner/          Reorganized process-runner source and headers
-```
-
-Project-specific details, known relationships, and limitations are listed in the [project index](#project-index).
-
-## Setup
-
-A C compiler and `make` are required for the recovered directories that provide Makefiles. No root-level build interface is established by the recovered file set.
-
-```sh
-git clone <repository-url>
-cd systems-c-reconstructions
-
-# Inspect the recovered build definitions before running them.
-make -C projects/original-machine-simulator
-make -C projects/original-graph-implementation
-make -C projects/graph-and-name-list
-make -C projects/original-process-runner
-```
-
-The commands above are candidate build commands, not recorded successful builds. Their availability follows from the presence of project-local Makefiles; target names, compiler assumptions, and runtime behavior must be checked from those files in the checkout.
-
-The reorganized directories currently contain source and headers but no listed Makefiles. Compile or integrate them with explicit include paths appropriate to the component being examined. For example, syntax-only compilation can be attempted as follows:
-
-```sh
-cc -std=c11 -Wall -Wextra -Iprojects/instruction-encoding/include \
-  -fsyntax-only projects/instruction-encoding/src/machine.c
-cc -std=c11 -Wall -Wextra -Iprojects/machine-simulator/include \
-  -fsyntax-only projects/machine-simulator/src/machine.c \
-  projects/machine-simulator/src/interpreter.c
-cc -std=c11 -Wall -Wextra -Iprojects/graph-adt/include \
-  -fsyntax-only projects/graph-adt/src/graph.c \
-  projects/graph-adt/src/name_list_format.c
-cc -std=c11 -Wall -Wextra -Iprojects/process-runner/include \
-  -fsyntax-only projects/process-runner/src/process_runner.c
-```
-
-These are recommended checks, not evidence that the code has compiled cleanly under a particular toolchain.
-
-## Data and external requirements
-
-No private dataset, credential, network service, or database is identified by the recovered file list. The checked-in `.input` files under `projects/original-process-runner` are local input fixtures, not evidence of access to external or private data.
-
-Before publishing additional fixtures, traces, grading outputs, or course materials, verify that they do not contain private data, protected assignment content, or material distributed under restrictions. Do not add secrets, machine-specific paths, or unreviewed external inputs to the repository.
-
-## Limitations
-
-- Recovery is constrained to the files currently present; missing prompts, specifications, expected outputs, and build logs are not reconstructed as facts.
-- The precise relationship between each recovered `projectN` directory and its reorganized counterpart requires source-level comparison.
-- Interfaces may reflect course-provided headers or frameworks. Their provenance and redistribution status require review where not already documented.
-- The repository does not claim portability across compilers, operating systems, or C language modes.
-- `LICENSE_REVIEW.md` signals that licensing and attribution review remains part of publication readiness.
-
-## Provenance and attribution
-
-This repository is a reconstruction from university and research files associated with 216. It preserves demonstrated implementation logic rather than recreating assignment prompts, grading rubrics, hidden tests, or unobserved results.
-
-Files and interfaces that originated in a course framework, starter code, or other external material should retain their original attribution where known. If a source file cannot be confidently attributed or cleared for redistribution, treat it as under review and follow [LICENSE_REVIEW.md](LICENSE_REVIEW.md). Contributions should follow [CONTRIBUTING.md](CONTRIBUTING.md), and security reports should follow [SECURITY.md](SECURITY.md).
-
-## Project index
-
-| Project | Primary location | Summary | Build/validation position |
-| --- | --- | --- | --- |
-| Line checker | `projects/line-checker` | One recovered C source file, `linecheck.c`. | No Makefile or test fixture is listed; behavior requires source review. |
-| Instruction encoding | `projects/original-instruction-encoding`, `projects/instruction-encoding` | Machine-related implementation and interface files. | A recovered `test.c` exists in `project2`; no recorded result is available. |
-| Machine simulator | `projects/original-machine-simulator`, `projects/machine-simulator` | Machine state, interpreter, and assembler interfaces; recovered example/program material. | `project3` has a Makefile. Build and execution are unverified. |
-| Graph ADT | `projects/original-graph-implementation`, `projects/graph-and-name-list`, `projects/graph-adt` | Graph implementations, public/internal headers, and name-list formatting support. | `project4` and `project5` have Makefiles. No passing result is recorded. |
-| Process runner | `projects/original-process-runner`, `projects/process-runner` | Process-runner-related implementation, internal/public interfaces, and splitting support. | `project6` has a Makefile and recovered harness-like files. No result is recorded. |
-| Machine programs | `projects/c-and-assembly-examples` | Recovered paired `.c` and `.s` programs. | No Makefile is listed; execution environment and expected outputs are unresolved. |
-
-<!-- internal-projects:start -->
 ## Projects
 
 | Project | Location |
 |---|---|
-| Line Checker | `projects/line-checker` |
-| Original Instruction Encoding | `projects/original-instruction-encoding` |
-| Original Machine Simulator | `projects/original-machine-simulator` |
-| Original Graph Implementation | `projects/original-graph-implementation` |
-| Graph and Name List | `projects/graph-and-name-list` |
-| Original Process Runner | `projects/original-process-runner` |
-| C and Assembly Examples | `projects/c-and-assembly-examples` |
-<!-- internal-projects:end -->
+| Instruction Encoding | [`projects/instruction-encoding`](projects/instruction-encoding) |
+| Machine Simulator | [`projects/machine-simulator`](projects/machine-simulator) |
+| Graph ADT | [`projects/graph-adt`](projects/graph-adt) |
+| Process Runner | [`projects/process-runner`](projects/process-runner) |
+| Line Checker | [`projects/line-checker`](projects/line-checker) |
+| C and Assembly Examples | [`projects/c-and-assembly-examples`](projects/c-and-assembly-examples) |
+
+## Getting started
+
+1. Install a C compiler and `make`.
+2. Review a project-local Makefile or source directory before compiling.
+3. Run each project independently; there is no repository-wide executable.
+
+## Portfolio note
+
+Reorganized components are highlighted above; recovered `original-*` directories remain for provenance and comparison.
+
+## License and attribution
+
+Third-party and collaborator attribution is documented in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+
+Use and redistribution are governed by the repository's [`LICENSE`](LICENSE).
