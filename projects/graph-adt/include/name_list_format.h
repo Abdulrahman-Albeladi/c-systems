@@ -3,35 +3,37 @@
 
 #include <stddef.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
- * Formats a sequence of names into a caller-provided buffer.
+ * Joins a NULL-terminated sequence of names into a single string.
  *
- * Output form:
+ * Output format:
  *   - empty input: ""
  *   - one name: "name"
- *   - multiple names: "name1, name2, name3"
+ *   - multiple names: "name1 name2 name3"   (single-space delimiter)
  *
- * The function always NUL-terminates the destination buffer when
- * destination_size > 0.
- *
- * Parameters:
- *   names            array of pointers to NUL-terminated strings
- *   count            number of elements in names
- *   destination      output buffer
- *   destination_size size of output buffer in bytes
+ * Behavior:
+ *   - Always NUL-terminates destination when destination_size > 0.
+ *   - Never writes a partial delimiter or partial name; if the next token
+ *     does not fully fit (including its preceding space when needed), the
+ *     function stops before it.
+ *   - names may be NULL to represent an empty sequence. The array itself must
+ *     be terminated by a NULL pointer.
  *
  * Returns:
- *   The number of characters that would have been written excluding the
- *   terminating NUL byte. If the return value is greater than or equal to
- *   destination_size, truncation occurred.
- *
- * Notes:
- *   - NULL name entries are formatted as empty strings.
- *   - Passing names == NULL is valid only when count == 0.
+ *   The number of characters actually written to destination, not including
+ *   the terminating NUL byte. Returns 0 when destination is NULL or
+ *   destination_size == 0.
  */
-size_t format_name_list(const char *const *names,
-                        size_t count,
+size_t name_list_format(const char *const names[],
                         char *destination,
                         size_t destination_size);
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif /* NAME_LIST_FORMAT_H */

@@ -3,49 +3,44 @@
 
 #include "name_list_format.h"
 
-void name_list_format(char *const names[], char result[], size_t result_capacity) {
+size_t name_list_format(const char *const names[],
+                        char *destination,
+                        size_t destination_size) {
   size_t used = 0;
   size_t i = 0;
 
-  if (result == NULL || result_capacity == 0) {
-    return;
+  if (destination == NULL || destination_size == 0) {
+    return 0;
   }
 
-  result[0] = '\0';
+  destination[0] = '\0';
 
   if (names == NULL) {
-    return;
+    return 0;
   }
 
   while (names[i] != NULL) {
     const char *name = names[i];
-    size_t name_len;
-    size_t required;
+    size_t name_len = (name != NULL) ? strlen(name) : 0u;
+    size_t required = name_len + (used > 0 ? 1u : 0u); /* space + name */
 
-    if (name == NULL) {
-      break;
-    }
-
-    name_len = strlen(name);
-    required = name_len + (used > 0 ? 1u : 0u);
-
-    /*
-     * Keep the output always NUL-terminated and stop before a partial write.
-     * This produces a space-delimited representation suitable for simple
-     * logging or deterministic text comparisons in graph-related utilities.
-     */
-    if (required >= result_capacity - used) {
+    /* Ensure room for delimiter+name and trailing NUL without truncation. */
+    if (required >= destination_size - used) {
       break;
     }
 
     if (used > 0) {
-      result[used++] = ' ';
+      destination[used++] = ' ';
     }
 
-    memcpy(result + used, name, name_len);
-    used += name_len;
-    result[used] = '\0';
+    if (name_len > 0) {
+      memcpy(destination + used, name, name_len);
+      used += name_len;
+    }
 
-    i++;
+    destination[used] = '\0';
+    ++i;
   }
+
+  return used;
 }
